@@ -1,39 +1,30 @@
+import { notFound } from "next/navigation"
+
 import styles from "@/styles/templates/project.module.scss"
 import Layout from "@/components/Layout"
 import InternalLink from "@/components/InternalLink"
 import Button from "@/components/Button"
 import Video from "@/components/Video"
-import Carousel from "@/components/Carousel"
 import FadeWrapper from "@/components/FadeWrapper"
+import { sanityFetch } from "@/sanity/lib/live"
+import { WORK_PROJECT_QUERY, WORK_PROJECT_SLUGS_QUERY } from "@/sanity/lib/queries"
+import { client } from "@/sanity/lib/client"
 
-interface VideoItem {
-  type?: string
-  url: string
+export async function generateStaticParams() {
+  const slugs = await client.fetch(WORK_PROJECT_SLUGS_QUERY)
+  return slugs.map((item: any) => ({ slug: item.slug }))
 }
 
-interface ImageItem {
-  src: string
-  alt?: string
-}
+const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
+  const { data: project } = await sanityFetch({
+    query: WORK_PROJECT_QUERY,
+    params: { slug },
+  })
 
-interface ProjectData {
-  title: string
-  headline: string
-  videos: VideoItem[]
-  images: ImageItem[]
-}
+  if (!project) notFound()
 
-const getProject = (_slug: string): ProjectData => ({
-  title: "",
-  headline: "",
-  videos: [],
-  images: [],
-})
-
-const ProjectPage = ({ params }: { params: { slug: string } }) => {
-  const project = getProject(params.slug)
-  const videos = project.videos || []
-  const images = project.images || []
+  const videos: any[] = project.videos || []
 
   return (
     <Layout>
@@ -63,9 +54,6 @@ const ProjectPage = ({ params }: { params: { slug: string } }) => {
             />
           </div>
         ))}
-        {images.length > 0 &&
-          <Carousel images={images} />
-        }
       </FadeWrapper>
     </Layout>
   )

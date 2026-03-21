@@ -1,0 +1,59 @@
+import { defineQuery } from "next-sanity"
+
+export const WORK_PROJECTS_QUERY = defineQuery(`
+  *[_type == "workProject" && isActive == true] | order(orderRank) {
+    _id,
+    title,
+    "slug": slug.current,
+    "headline": client,
+    thumbnail
+  }
+`)
+
+export const WORK_PROJECT_SLUGS_QUERY = defineQuery(`
+  *[_type == "workProject" && defined(slug.current)] {
+    "slug": slug.current
+  }
+`)
+
+export const WORK_PROJECT_QUERY = defineQuery(`
+  *[_type == "workProject" && slug.current == $slug][0] {
+    title,
+    "headline": client,
+    videos[] {
+      "type": videoTitle,
+      url
+    }
+  }
+`)
+
+export const ABOUT_QUERY = defineQuery(`
+  *[_type == "about"][0] {
+    heading,
+    profileImage,
+    "resumeUrl": resume.asset->url,
+    email,
+    socialLinks,
+    funButton
+  }
+`)
+
+export const HEADER_QUERY = defineQuery(`
+  *[_type == "about"][0] {
+    "twitter": socialLinks.twitter
+  }
+`)
+
+export const MISC_QUERY = defineQuery(`
+  {
+    "websites": *[_type == "miscWebsite"] { _id, name, url },
+    "songs": *[_type == "miscSong"] { _id, title, artist, url },
+    "instagrams": *[_type == "miscInstagram"] { _id, handle }
+  }
+`)
+
+export const RESUME_QUERY = defineQuery(`
+  *[_type == "about"][0] {
+    "resumeUrl": resume.asset->url
+  }
+`)
