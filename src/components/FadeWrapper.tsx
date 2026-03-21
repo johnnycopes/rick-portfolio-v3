@@ -1,19 +1,7 @@
-import cx from "classnames"
-
 import styles from "@/styles/components/FadeWrapper.module.scss"
 
-interface FadeWrapperProps {
-  children: React.ReactNode
-  status?: string
-}
-
-const FadeWrapper = ({ children, status }: FadeWrapperProps) => (
-  <div className={cx(
-    styles.wrapper,
-    { [styles.entering]: status === "entering" },
-    { [styles.enter]: status === "enter" },
-    { [styles.exit]: status === "exiting" },
-    )}>
+const FadeWrapper = ({ children }: { children: React.ReactNode }) => (
+  <div className={styles.wrapper}>
     {children}
   </div>
 )
