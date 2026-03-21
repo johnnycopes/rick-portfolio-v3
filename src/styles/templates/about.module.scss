@@ -1,0 +1,63 @@
+@import "../_variables.scss";
+
+.pic {
+  max-width: 70%;
+  max-height: 300px;
+  margin: 0 auto 3rem;
+}
+
+.greeting {
+  margin-bottom: 3rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 100px 100px;
+  grid-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.email {
+  display: inline-block;
+  transition: $fast-transition;
+
+  &:hover {
+    color: $action-color;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .buttons {
+    grid-template-columns: 120px 120px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .buttons {
+    grid-template-columns: 160px 160px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .about {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-gap: 30px;
+    align-items: center;
+  }
+
+  .pic {
+    grid-column: 1;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    max-height: calc(100vh - #{map-get($app, header)});
+  }
+
+  .bio {
+    grid-column: 2;
+  }
+}

@@ -1,0 +1,80 @@
+@import "../_variables.scss";
+
+.header {
+  margin-bottom: 5rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+}
+
+.link {
+  margin-bottom: 3rem;
+
+  &:hover {
+    color: $font-color;
+
+    & > .link__name {
+      color: $action-color;
+    }
+  }
+
+  &__name {
+    font-weight: 400;
+    transition: $fast-transition;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.fade {
+  animation: fade-in-keyframes 175ms ease-in;
+}
+
+@keyframes fade-in-keyframes {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 1rem;
+  min-height: 150px;
+  min-width: 226.2px;
+  position: relative;
+  outline: none;
+  transition: $medium-transition;
+  border: 1px solid $light-color;
+
+  &:hover {
+    border: 1px solid $action-color;
+    background: $action-color;
+    transform: $scale;
+  }
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(4px) $scale;
+  }
+
+  &__image {
+    height: 150px;
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  .button {
+    min-height: 250px;
+    min-width: 377px;
+
+    &__image {
+      height: 250px;
+    }
+  }
+}

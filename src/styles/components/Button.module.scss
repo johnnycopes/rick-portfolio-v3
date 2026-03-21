@@ -1,0 +1,61 @@
+@import "../_variables.scss";
+
+.button {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: $font-color;
+  border: 1px solid $font-color;
+  cursor: pointer;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  transition: color 250ms;
+  font-size: inherit;
+  font-weight: map-get($font-weight, normal);
+  font-family: $font-stack;
+  text-transform: lowercase;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: map-get($z-index, button-animation);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $action-color;
+    transform: scaleX(0);
+    transform-origin: 50%;
+    transition: $medium-transition;
+  }
+
+  &:hover {
+    color: $bg-color;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .button {
+    width: 120px;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .button {
+    width: 160px;
+    height: 56px;
+  }
+}

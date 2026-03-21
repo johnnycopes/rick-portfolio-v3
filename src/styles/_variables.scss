@@ -1,0 +1,87 @@
+// ===================
+// COLORS
+// ===================
+
+$font-color: #212121;
+$bg-color: #fff;
+$light-color: #ddd;
+$action-color: #fb0006;
+$backdrop-color: rgba(0,0,0,0.6);
+
+
+// ===================
+// TYPOGRAPHY
+// ===================
+
+$font-stack: 'Roboto', 'HelveticaNeue', 'Helvetica Neue', 'Helevtica', 'Lucida Grande', 'Trebuchet MS', sans-serif;
+
+$font-weight: (
+  normal: 300,
+  bold: 400
+);
+
+
+// ===================
+// TRANSITIONS
+// ===================
+
+$scale: scale(1.02);
+$fast-transition: all 150ms ease-in-out;
+$medium-transition: all 250ms ease-in-out;
+
+@keyframes enter-top {
+  0% {
+    transform: translateY(-5vh);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enter-bottom {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+// ===================
+// VARIABLES
+// ===================
+
+$app: (
+  max-width: 1090px,
+  header: 45px,
+  gap: 3rem
+);
+
+$z-index: (
+	header: 10,
+	iframe: 5,
+  project-backdrop: -1,
+  button-animation: -1
+);
+
+
+// ===================
+// MIXINS
+// ===================
+
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: $light-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $action-color;
+  }
+}

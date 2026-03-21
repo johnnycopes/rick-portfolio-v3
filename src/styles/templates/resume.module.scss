@@ -1,0 +1,55 @@
+@import "../_variables.scss";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: calc(100vh - #{map-get($app, header)});
+  width: 100vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  margin-bottom: calc(5rem + #{map-get($app, header)});
+}
+
+.icon {
+  margin-bottom: 5rem;
+  font-size: 5rem;
+  color: $light-color;
+}
+
+.inputField {
+  display: flex;
+}
+
+.input {
+  margin-right: 1rem;
+  width: 100%;
+  padding: 1rem;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid $font-color;
+  transition: $fast-transition;
+
+  &:focus {
+    border-color: $action-color;
+  }
+}
+
+.error {
+  margin-top: 1rem;
+  position: absolute;
+  bottom: -4rem;
+}
+
+.resume {
+  height: 100%;
+}

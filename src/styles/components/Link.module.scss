@@ -1,0 +1,22 @@
+@import "../_variables.scss";
+
+.link {
+  text-decoration: none;
+  transition: $fast-transition;
+
+  &:link,
+  &:visited {
+    color: $font-color;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $action-color;
+  }
+}
+
+.active {
+  color: $action-color !important;
+  text-decoration: underline;
+}

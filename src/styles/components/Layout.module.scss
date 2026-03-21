@@ -1,0 +1,27 @@
+@import "../_variables.scss";
+
+.wrapper {
+  padding-top: map-get($app, header);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 map-get($app, gap);
+  max-width: map-get($app, max-width);
+  text-align: center;
+}
+
+.includesHeader {
+  min-height: calc(100vh - #{map-get($app, header)});
+}
+
+.verticallyCentered {
+  justify-content: center;
+}
+
+.horizontallyCentered {
+  align-items: center;
+}

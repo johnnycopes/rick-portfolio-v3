@@ -1,0 +1,71 @@
+@import "../_variables.scss";
+
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 100px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: map-get($app, gap);
+
+  ::selection {
+    background: transparent;
+  }
+}
+
+.image {
+  grid-row: 1;
+  max-height: 100%;
+}
+
+.arrow {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100px;
+  cursor: pointer;
+
+  polyline {
+    transition: $fast-transition;
+  }
+
+  &:hover polyline {
+    stroke: $action-color;
+  }
+
+  &__left {
+    justify-self: start;
+  }
+
+  &__right {
+    justify-self: end;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .carousel {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 800px;
+
+    ::selection {
+      background: transparent;
+    }
+  }
+
+  .photo {
+    grid-column: 2;
+  }
+
+  .arrow {
+    grid-row: 1;
+    width: 100%;
+
+    &__left {
+      grid-column: 1;
+    }
+
+    &__right {
+      grid-column: 3;
+    }
+  }
+}

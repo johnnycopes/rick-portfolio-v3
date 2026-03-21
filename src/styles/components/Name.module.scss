@@ -1,0 +1,10 @@
+@import "../_variables.scss";
+
+.name {
+  text-transform: uppercase;
+  font-weight: map-get($font-weight, bold);
+}
+
+.accent {
+  color: $action-color;
+}

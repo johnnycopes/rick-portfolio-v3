@@ -1,0 +1,74 @@
+@import "../_variables.scss";
+
+.tile {
+  height: 300px;
+  transition: $medium-transition;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  opacity: 1;
+
+  &::after {
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: $backdrop-color;
+    opacity: 1;
+    z-index: map-get($z-index, project-backdrop);
+    transition: $medium-transition;
+  }
+}
+
+.text {
+  margin: 0 auto;
+  width: 80%;
+  opacity: 1;
+  color: $bg-color;
+  transition: $medium-transition;
+  text-decoration: none;
+}
+
+.headline {
+  margin-bottom: 1rem;
+  font-weight: map-get($font-weight, bold);
+}
+
+@media screen and (min-width: 500px) {
+
+  .text {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .container {
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  .tile {
+    &:hover {
+      .container::after {
+        opacity: 1;
+      }
+
+      .text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+}

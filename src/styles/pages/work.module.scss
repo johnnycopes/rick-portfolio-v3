@@ -1,0 +1,13 @@
+@import "../_variables.scss";
+
+.work {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-gap: map-get($app, gap);
+  margin: map-get($app, gap) 0;
+
+  @media screen and (min-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

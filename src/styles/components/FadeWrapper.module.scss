@@ -1,0 +1,17 @@
+@import "../_variables.scss";
+
+.wrapper {
+  transition: 200ms all ease-in;
+}
+
+.entering {
+  opacity: 0;
+}
+
+.enter {
+  opacity: 1;
+}
+
+.exit {
+  visibility: hidden;
+}

@@ -1,0 +1,22 @@
+@import "../_variables.scss";
+
+.video {
+  background: url('/loader.svg') center center no-repeat;
+  background-size: 50px;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.type {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+  .video {
+    background-size: 100px;
+  }
+}

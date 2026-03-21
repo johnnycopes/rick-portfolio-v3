@@ -1,0 +1,36 @@
+@import "../_variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+.info {
+  text-align: right;
+}
+
+.headline {
+  font-weight: map-get($font-weight, bold);
+  margin-bottom: 5px;
+}
+
+.name {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.video {
+  margin-bottom: 5rem;
+}
+
+@media screen and (min-width: 500px) {
+  .header {
+    margin-bottom: 5rem;
+  }
+
+  .video {
+    margin-bottom: 7rem;
+  }
+}
