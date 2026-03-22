@@ -10,33 +10,9 @@ const KHALED_BLUR_DATA_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD
 import styles from "@/styles/templates/misc.module.scss"
 import FadeWrapper from "@/components/FadeWrapper"
 import ExternalLink from "@/components/ExternalLink"
+import { MISC_QUERY_RESULT } from "../../../sanity.types"
 
-interface Item {
-  _id: string;
-}
-
-interface Website extends Item {
-  name: string
-  url: string
-}
-
-interface Song extends Item {
-  artist: string
-  title: string
-  url: string
-}
-
-interface Instagram extends Item {
-  handle: string
-}
-
-interface MiscContentProps {
-  websites: Website[]
-  songs: Song[]
-  instagrams: Instagram[]
-}
-
-const getNewItemFromArray = <T extends Item>(arr: T[], currentItem: T): T => {
+const getNewItemFromArray = <T extends { _id: string; }>(arr: T[], currentItem: T): T => {
   const currentItemIndex = arr.findIndex(({ _id }) => _id === currentItem._id)
   let newItemIndex = Math.floor(Math.random() * arr.length)
 
@@ -47,7 +23,7 @@ const getNewItemFromArray = <T extends Item>(arr: T[], currentItem: T): T => {
   return arr[newItemIndex]
 }
 
-const MiscContent = ({ websites, songs, instagrams }: MiscContentProps) => {
+const MiscContent = ({ websites, songs, instagrams }: MISC_QUERY_RESULT) => {
   const [website, setWebsite] = useState(websites[0])
   const [song, setSong] = useState(songs[0])
   const [instagram, setInstagram] = useState(instagrams[0])
@@ -72,19 +48,19 @@ const MiscContent = ({ websites, songs, instagrams }: MiscContentProps) => {
         onAnimationEnd={() => setFade(false)}
         >
         <ExternalLink className={styles.link}
-          link={website?.url}
+          link={website?.url ?? ''}
           >
-          Website that I like: <span className={styles.link__name}>{website?.name}</span>
+          Website that I like: <span className={styles.link__name}>{website.name}</span>
         </ExternalLink>
         <ExternalLink className={styles.link}
-          link={song?.url}
+          link={song?.url ?? ''}
           >
-          Song that I like: <span className={styles.link__name}>{song?.artist} — {song?.title}</span>
+          Song that I like: <span className={styles.link__name}>{song.artist} — {song.title}</span>
         </ExternalLink>
         <ExternalLink className={styles.link}
-          link={`https://www.instagram.com/${instagram?.handle}`}
+          link={`https://www.instagram.com/${instagram.handle}`}
           >
-          Instagram that I like: <span className={styles.link__name}>@{instagram?.handle}</span>
+          Instagram that I like: <span className={styles.link__name}>@{instagram.handle}</span>
         </ExternalLink>
       </div>
       <button className={styles.button}

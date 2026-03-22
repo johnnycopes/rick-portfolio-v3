@@ -12,7 +12,6 @@ import { ABOUT_QUERY } from "@/sanity/lib/queries"
 
 const AboutPage = async () => {
   const { data: about } = await sanityFetch({ query: ABOUT_QUERY })
-  console.log(about);
 
   return (
     <Layout
@@ -50,8 +49,8 @@ const AboutPage = async () => {
                 <Button>instagram</Button>
               </ExternalLink>
               {about?.funButton && (
-                <ExternalLink link={about.funButton.url}>
-                  <Button>{about.funButton.text}</Button>
+                <ExternalLink link={about?.funButton.url ?? ''}>
+                  <Button>{about?.funButton.text ?? ''}</Button>
                 </ExternalLink>
               )}
             </div>

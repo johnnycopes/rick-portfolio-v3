@@ -13,11 +13,11 @@ const WorkPage = async () => {
     <Layout>
       <FadeWrapper>
         <div className={styles.work}>
-          {projects.map((project: any) => (
+          {projects.map((project) => (
             <ProjectTile
               key={project._id}
               link={`/work/${project.slug}`}
-              title={project.title}
+              title={project?.title ?? ''}
               headline={project.headline ?? undefined}
               image={project.thumbnail
                 ? urlFor(project.thumbnail).width(800).height(300).fit("crop").url()

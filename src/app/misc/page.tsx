@@ -4,18 +4,18 @@ import { MISC_QUERY } from "@/sanity/lib/queries"
 import MiscContent from "./MiscContent"
 
 const MiscPage = async () => {
-  const { data } = await sanityFetch({ query: MISC_QUERY })
+  const { data: misc } = await sanityFetch({ query: MISC_QUERY })
 
   return (
     <Layout
       verticallyCentered={true}
       horizontallyCentered={true}
       >
-      <MiscContent
-        websites={data?.websites ?? []}
-        songs={data?.songs ?? []}
-        instagrams={data?.instagrams ?? []}
-      />
+      {misc && <MiscContent
+        websites={misc.websites}
+        songs={misc.songs}
+        instagrams={misc.instagrams}
+      />}
     </Layout>
   )
 }

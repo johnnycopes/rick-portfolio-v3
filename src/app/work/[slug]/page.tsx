@@ -12,7 +12,7 @@ import { client } from "@/sanity/lib/client"
 
 export async function generateStaticParams() {
   const slugs = await client.fetch(WORK_PROJECT_SLUGS_QUERY)
-  return slugs.map((item: any) => ({ slug: item.slug }))
+  return slugs.map((item) => ({ slug: item.slug }))
 }
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
@@ -24,7 +24,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
 
   if (!project) notFound()
 
-  const videos: any[] = project.videos || []
+  const videos = project.videos || []
 
   return (
     <Layout>
@@ -48,10 +48,10 @@ const ProjectPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
           <div className={styles.video}
             key={index}
             >
-            <Video
-              type={video.type}
-              url={video.url}
-            />
+            {video && <Video
+              type={video?.type ?? ''}
+              url={video?.url ?? ''}
+            />}
           </div>
         ))}
       </FadeWrapper>
