@@ -26,6 +26,7 @@ const AboutPage = async () => {
               className={styles.pic}
               src={urlFor(about.profileImage).width(800).url()}
               alt={(about.profileImage as { alt?: string }).alt || "Rick Segal"}
+              loading="eager"
               width={about.profileImageWidth ?? 800}
               height={about.profileImageHeight ?? 800}
               sizes="(min-width: 900px) 400px, 70vw"

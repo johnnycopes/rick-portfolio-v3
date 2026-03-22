@@ -91,6 +91,7 @@ const MiscContent = ({ websites, songs, instagrams }: MiscContentProps) => {
           className={styles.button__image}
           src={khaledImage}
           alt="DJ Khaled"
+          loading="eager"
           placeholder="blur"
           blurDataURL={KHALED_BLUR_DATA_URL}
           style={{ width: "100%", height: "auto" }}
