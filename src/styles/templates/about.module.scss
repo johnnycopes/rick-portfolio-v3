@@ -1,8 +1,8 @@
 @import "../_variables.scss";
 
 .pic {
+  display: block;
   max-width: 70%;
-  max-height: 300px;
   margin: 0 auto 3rem;
 }
 
@@ -52,9 +52,8 @@
   .pic {
     grid-column: 1;
     margin: 0;
-    width: 100%;
     max-width: none;
-    max-height: calc(100vh - #{map-get($app, header)});
+    width: 100%;
   }
 
   .bio {

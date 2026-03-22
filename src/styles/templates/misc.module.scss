@@ -41,12 +41,13 @@
 }
 
 .button {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 377px;
   cursor: pointer;
   border-radius: 5px;
   padding: 1rem;
-  min-height: 150px;
-  min-width: 226.2px;
-  position: relative;
   outline: none;
   transition: $medium-transition;
   border: 1px solid $light-color;
@@ -60,21 +61,5 @@
   &:active {
     box-shadow: none;
     transform: translateY(4px) $scale;
-  }
-
-  &__image {
-    height: 150px;
-  }
-}
-
-
-@media screen and (min-width: 500px) {
-  .button {
-    min-height: 250px;
-    min-width: 377px;
-
-    &__image {
-      height: 250px;
-    }
   }
 }

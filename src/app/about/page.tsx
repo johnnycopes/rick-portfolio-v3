@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import styles from "@/styles/templates/about.module.scss"
 import Layout from "@/components/Layout"
 import FadeWrapper from "@/components/FadeWrapper"
@@ -10,6 +12,7 @@ import { ABOUT_QUERY } from "@/sanity/lib/queries"
 
 const AboutPage = async () => {
   const { data: about } = await sanityFetch({ query: ABOUT_QUERY })
+  console.log(about);
 
   return (
     <Layout
@@ -19,10 +22,16 @@ const AboutPage = async () => {
       <FadeWrapper>
         <div className={styles.about}>
           {about?.profileImage && (
-            <img
+            <Image
               className={styles.pic}
-              src={urlFor(about.profileImage).width(400).url()}
-              alt={(about.profileImage as any).alt || "Rick Segal"}
+              src={urlFor(about.profileImage).width(800).url()}
+              alt={(about.profileImage as { alt?: string }).alt || "Rick Segal"}
+              width={about.profileImageWidth ?? 800}
+              height={about.profileImageHeight ?? 800}
+              sizes="(min-width: 900px) 400px, 70vw"
+              style={{ width: "100%", height: "auto" }}
+              placeholder={about.profileImageLqip ? "blur" : "empty"}
+              blurDataURL={about.profileImageLqip ?? undefined}
             />
           )}
           <div className={styles.bio}>

@@ -6,7 +6,8 @@ export const WORK_PROJECTS_QUERY = defineQuery(`
     title,
     "slug": slug.current,
     "headline": client,
-    thumbnail
+    thumbnail,
+    "thumbnailLqip": thumbnail.asset->metadata.lqip
   }
 `)
 
@@ -31,6 +32,9 @@ export const ABOUT_QUERY = defineQuery(`
   *[_type == "about"][0] {
     heading,
     profileImage,
+    "profileImageLqip": profileImage.asset->metadata.lqip,
+    "profileImageWidth": profileImage.asset->metadata.dimensions.width,
+    "profileImageHeight": profileImage.asset->metadata.dimensions.height,
     "resumeUrl": resume.asset->url,
     email,
     socialLinks,

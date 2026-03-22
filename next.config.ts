@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   sassOptions: {
     silenceDeprecations: ["import", "global-builtin"],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

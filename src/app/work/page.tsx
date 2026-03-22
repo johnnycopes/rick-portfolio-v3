@@ -23,6 +23,7 @@ const WorkPage = async () => {
                 ? urlFor(project.thumbnail).width(800).height(300).fit("crop").url()
                 : undefined
               }
+              lqip={project.thumbnailLqip ?? undefined}
             />
           ))}
         </div>
