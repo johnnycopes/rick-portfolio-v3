@@ -35,13 +35,15 @@ interface MiscContentProps {
   instagrams: Instagram[]
 }
 
-const getNewItemFromArray = <T extends { _id: string }>(array: T[], currentItem: T): T => {
-  const currentItemIndex = array.findIndex((item) => item._id === currentItem._id)
-  let newItemIndex = Math.floor(Math.random() * array.length)
+const getNewItemFromArray = <T extends { _id: string }>(arr: T[], currentItem: T): T => {
+  const currentItemIndex = arr.findIndex((item) => item._id === currentItem._id)
+  let newItemIndex = Math.floor(Math.random() * arr.length)
+
   while (newItemIndex === currentItemIndex) {
-    newItemIndex = Math.floor(Math.random() * array.length)
+    newItemIndex = Math.floor(Math.random() * arr.length)
   }
-  return array[newItemIndex]
+
+  return arr[newItemIndex]
 }
 
 const MiscContent = ({ websites, songs, instagrams }: MiscContentProps) => {
