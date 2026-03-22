@@ -11,21 +11,22 @@ import styles from "@/styles/templates/misc.module.scss"
 import FadeWrapper from "@/components/FadeWrapper"
 import ExternalLink from "@/components/ExternalLink"
 
-interface Website {
-  _id: string
+interface Item {
+  _id: string;
+}
+
+interface Website extends Item {
   name: string
   url: string
 }
 
-interface Song {
-  _id: string
+interface Song extends Item {
   artist: string
   title: string
   url: string
 }
 
-interface Instagram {
-  _id: string
+interface Instagram extends Item {
   handle: string
 }
 
@@ -35,8 +36,8 @@ interface MiscContentProps {
   instagrams: Instagram[]
 }
 
-const getNewItemFromArray = <T extends { _id: string }>(arr: T[], currentItem: T): T => {
-  const currentItemIndex = arr.findIndex((item) => item._id === currentItem._id)
+const getNewItemFromArray = <T extends Item>(arr: T[], currentItem: T): T => {
+  const currentItemIndex = arr.findIndex(({ _id }) => _id === currentItem._id)
   let newItemIndex = Math.floor(Math.random() * arr.length)
 
   while (newItemIndex === currentItemIndex) {
