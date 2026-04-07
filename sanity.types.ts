@@ -15,36 +15,6 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type MiscInstagram = {
-  _id: string;
-  _type: "miscInstagram";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  handle?: string;
-};
-
-export type MiscSong = {
-  _id: string;
-  _type: "miscSong";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  artist?: string;
-  url?: string;
-};
-
-export type MiscWebsite = {
-  _id: string;
-  _type: "miscWebsite";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  url?: string;
-};
-
 export type SanityImageAssetReference = {
   _ref: string;
   _type: "reference";
@@ -79,32 +49,25 @@ export type About = {
     media?: unknown;
     _type: "file";
   };
-  email?: string;
   socialLinks?: {
     linkedin?: string;
-    instagram?: string;
-    twitter?: string;
-  };
-  funButton?: {
-    text?: string;
-    url?: string;
   };
 };
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 };
 
 export type SanityImageHotspot = {
   _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type WorkProject = {
@@ -136,7 +99,7 @@ export type WorkProject = {
 
 export type Slug = {
   _type: "slug";
-  current: string;
+  current?: string;
   source?: string;
 };
 
@@ -161,9 +124,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: "sanity.imageDimensions";
-  height: number;
-  width: number;
-  aspectRatio: number;
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
@@ -189,14 +152,14 @@ export type SanityFileAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   source?: SanityAssetSourceData;
 };
 
@@ -218,14 +181,14 @@ export type SanityImageAsset = {
   title?: string;
   description?: string;
   altText?: string;
-  sha1hash: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-  assetId: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
   uploadId?: string;
-  path: string;
-  url: string;
+  path?: string;
+  url?: string;
   metadata?: SanityImageMetadata;
   source?: SanityAssetSourceData;
 };
@@ -238,9 +201,6 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | MiscInstagram
-  | MiscSong
-  | MiscWebsite
   | SanityImageAssetReference
   | SanityFileAssetReference
   | About
@@ -280,7 +240,7 @@ export type WORK_PROJECTS_QUERY_RESULT = Array<{
 // Variable: WORK_PROJECT_SLUGS_QUERY
 // Query: *[_type == "workProject" && defined(slug.current)] {    "slug": slug.current  }
 export type WORK_PROJECT_SLUGS_QUERY_RESULT = Array<{
-  slug: string;
+  slug: string | null;
 }>;
 
 // Source: src/sanity/lib/queries.ts
@@ -297,7 +257,7 @@ export type WORK_PROJECT_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: ABOUT_QUERY
-// Query: *[_type == "about"][0] {    heading,    profileImage,    "profileImageLqip": profileImage.asset->metadata.lqip,    "profileImageWidth": profileImage.asset->metadata.dimensions.width,    "profileImageHeight": profileImage.asset->metadata.dimensions.height,    "resumeUrl": resume.asset->url,    email,    socialLinks,    funButton  }
+// Query: *[_type == "about"][0] {    heading,    profileImage,    "profileImageLqip": profileImage.asset->metadata.lqip,    "profileImageWidth": profileImage.asset->metadata.dimensions.width,    "profileImageHeight": profileImage.asset->metadata.dimensions.height,    "resumeUrl": resume.asset->url,    socialLinks  }
 export type ABOUT_QUERY_RESULT = {
   heading: string | null;
   profileImage: {
@@ -312,45 +272,10 @@ export type ABOUT_QUERY_RESULT = {
   profileImageWidth: number | null;
   profileImageHeight: number | null;
   resumeUrl: string | null;
-  email: string | null;
   socialLinks: {
     linkedin?: string;
-    instagram?: string;
-    twitter?: string;
-  } | null;
-  funButton: {
-    text?: string;
-    url?: string;
   } | null;
 } | null;
-
-// Source: src/sanity/lib/queries.ts
-// Variable: HEADER_QUERY
-// Query: *[_type == "about"][0] {    "twitter": socialLinks.twitter  }
-export type HEADER_QUERY_RESULT = {
-  twitter: string | null;
-} | null;
-
-// Source: src/sanity/lib/queries.ts
-// Variable: MISC_QUERY
-// Query: {    "websites": *[_type == "miscWebsite"] { _id, name, url },    "songs": *[_type == "miscSong"] { _id, title, artist, url },    "instagrams": *[_type == "miscInstagram"] { _id, handle }  }
-export type MISC_QUERY_RESULT = {
-  websites: Array<{
-    _id: string;
-    name: string | null;
-    url: string | null;
-  }>;
-  songs: Array<{
-    _id: string;
-    title: string | null;
-    artist: string | null;
-    url: string | null;
-  }>;
-  instagrams: Array<{
-    _id: string;
-    handle: string | null;
-  }>;
-};
 
 // Source: src/sanity/lib/queries.ts
 // Variable: RESUME_QUERY
@@ -366,9 +291,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "workProject" && isActive == true] | order(orderRank) {\n    _id,\n    title,\n    "slug": slug.current,\n    "headline": client,\n    thumbnail,\n    "thumbnailLqip": thumbnail.asset->metadata.lqip\n  }\n': WORK_PROJECTS_QUERY_RESULT;
     '\n  *[_type == "workProject" && defined(slug.current)] {\n    "slug": slug.current\n  }\n': WORK_PROJECT_SLUGS_QUERY_RESULT;
     '\n  *[_type == "workProject" && slug.current == $slug][0] {\n    title,\n    "headline": client,\n    videos[] {\n      "type": videoTitle,\n      url\n    }\n  }\n': WORK_PROJECT_QUERY_RESULT;
-    '\n  *[_type == "about"][0] {\n    heading,\n    profileImage,\n    "profileImageLqip": profileImage.asset->metadata.lqip,\n    "profileImageWidth": profileImage.asset->metadata.dimensions.width,\n    "profileImageHeight": profileImage.asset->metadata.dimensions.height,\n    "resumeUrl": resume.asset->url,\n    email,\n    socialLinks,\n    funButton\n  }\n': ABOUT_QUERY_RESULT;
-    '\n  *[_type == "about"][0] {\n    "twitter": socialLinks.twitter\n  }\n': HEADER_QUERY_RESULT;
-    '\n  {\n    "websites": *[_type == "miscWebsite"] { _id, name, url },\n    "songs": *[_type == "miscSong"] { _id, title, artist, url },\n    "instagrams": *[_type == "miscInstagram"] { _id, handle }\n  }\n': MISC_QUERY_RESULT;
+    '\n  *[_type == "about"][0] {\n    heading,\n    profileImage,\n    "profileImageLqip": profileImage.asset->metadata.lqip,\n    "profileImageWidth": profileImage.asset->metadata.dimensions.width,\n    "profileImageHeight": profileImage.asset->metadata.dimensions.height,\n    "resumeUrl": resume.asset->url,\n    socialLinks\n  }\n': ABOUT_QUERY_RESULT;
     '\n  *[_type == "about"][0] {\n    "resumeUrl": resume.asset->url\n  }\n': RESUME_QUERY_RESULT;
   }
 }
