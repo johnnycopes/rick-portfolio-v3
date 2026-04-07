@@ -9,7 +9,7 @@ import FadeWrapper from "@/components/FadeWrapper"
 import Button from "@/components/Button"
 
 const ResumeContent = ({ resumeUrl, password }: { resumeUrl: string; password: string }) => {
-  const [showResume, setShowResume] = useState(() => !!localStorage.getItem("rickSegal:showResume"))
+  const [showResume, setShowResume] = useState(() => typeof window !== "undefined" && !!localStorage.getItem("rickSegal:showResume"))
   const [input, setInput] = useState("")
   const [error, setError] = useState(false)
 
