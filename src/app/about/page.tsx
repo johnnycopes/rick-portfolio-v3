@@ -40,7 +40,7 @@ const AboutPage = async () => {
             </h2>
             <div className={styles.buttons}>
               <InternalLink link="/resume">
-                <Button>résumé</Button>
+                <Button>resume</Button>
               </InternalLink>
               <ExternalLink link={about?.socialLinks?.linkedin || "https://www.linkedin.com/in/rsegal"}>
                 <Button>linkedin</Button>
