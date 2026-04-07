@@ -45,18 +45,7 @@ const AboutPage = async () => {
               <ExternalLink link={about?.socialLinks?.linkedin || "https://www.linkedin.com/in/rsegal"}>
                 <Button>linkedin</Button>
               </ExternalLink>
-              <ExternalLink link={about?.socialLinks?.instagram || "https://www.instagram.com/riiyaack"}>
-                <Button>instagram</Button>
-              </ExternalLink>
-              {about?.funButton && (
-                <ExternalLink link={about?.funButton.url ?? ''}>
-                  <Button>{about?.funButton.text ?? ''}</Button>
-                </ExternalLink>
-              )}
             </div>
-            <ExternalLink link={`mailto:${about?.email}`}>
-              <h4>{about?.email}</h4>
-            </ExternalLink>
           </div>
         </div>
       </FadeWrapper>
