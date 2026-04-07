@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLock } from "@fortawesome/free-solid-svg-icons"
 
@@ -8,32 +8,24 @@ import styles from "@/styles/templates/resume.module.scss"
 import FadeWrapper from "@/components/FadeWrapper"
 import Button from "@/components/Button"
 
-const correctPassword = "TEST"
-
-const ResumeContent = ({ resumeUrl }: { resumeUrl: string }) => {
-  const [showResume, setShowResume] = useState(false)
-  const [password, setPassword] = useState("")
+const ResumeContent = ({ resumeUrl, password }: { resumeUrl: string; password: string }) => {
+  const [showResume, setShowResume] = useState(() => !!localStorage.getItem("rickSegal:showResume"))
+  const [input, setInput] = useState("")
   const [error, setError] = useState(false)
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setShowResume(!!localStorage.getItem("rickSegal:showResume"))
-    }
-  }, [])
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value)
+    setInput(event.target.value)
   }
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault()
-    if (password === correctPassword) {
+    if (input === password) {
       setError(false)
       setShowResume(true)
       typeof window !== "undefined" && localStorage.setItem("rickSegal:showResume", "true")
     } else {
       setError(true)
-      setPassword("")
+      setInput("")
     }
   }
 
@@ -57,7 +49,7 @@ const ResumeContent = ({ resumeUrl }: { resumeUrl: string }) => {
               <input className={styles.input}
                 type="password"
                 placeholder="Password"
-                value={password}
+                value={input}
                 onChange={handleChange}
               />
               <Button>

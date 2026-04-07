@@ -43,6 +43,7 @@ export const ABOUT_QUERY = defineQuery(`
 
 export const RESUME_QUERY = defineQuery(`
   *[_type == "about"][0] {
-    "resumeUrl": resume.asset->url
+    "resumeUrl": resume.asset->url,
+    resumePassword
   }
 `)

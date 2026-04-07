@@ -11,7 +11,7 @@ const ResumePage = async () => {
       verticallyCentered={true}
       horizontallyCentered={true}
     >
-      <ResumeContent resumeUrl={data?.resumeUrl ?? ""} />
+      <ResumeContent resumeUrl={data?.resumeUrl ?? ""} password={data?.resumePassword ?? ""} />
     </Layout>
   )
 }

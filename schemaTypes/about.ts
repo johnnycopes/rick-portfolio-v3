@@ -12,6 +12,7 @@ export const about = defineType({
       options: { hotspot: true },
     }),
     defineField({ name: "resume", type: "file" }),
+    defineField({ name: "resumePassword", type: "string" }),
     defineField({
       name: "socialLinks",
       type: "object",
