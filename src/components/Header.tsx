@@ -28,12 +28,6 @@ const Header = () => {
             >
             about
           </InternalLink>
-          <InternalLink className={cx(styles.item, styles.misc)}
-            link="/misc"
-            applyActiveClass={true}
-            >
-            misc
-          </InternalLink>
         </nav>
       </div>
     </header>

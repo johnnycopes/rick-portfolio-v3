@@ -40,13 +40,6 @@ export const ABOUT_QUERY = defineQuery(`
   }
 `)
 
-export const MISC_QUERY = defineQuery(`
-  {
-    "websites": *[_type == "miscWebsite"] { _id, name, url },
-    "songs": *[_type == "miscSong"] { _id, title, artist, url },
-    "instagrams": *[_type == "miscInstagram"] { _id, handle }
-  }
-`)
 
 export const RESUME_QUERY = defineQuery(`
   *[_type == "about"][0] {
