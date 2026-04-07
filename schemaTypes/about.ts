@@ -12,22 +12,11 @@ export const about = defineType({
       options: { hotspot: true },
     }),
     defineField({ name: "resume", type: "file" }),
-    defineField({ name: "email", type: "string" }),
     defineField({
       name: "socialLinks",
       type: "object",
       fields: [
         defineField({ name: "linkedin", type: "url" }),
-        defineField({ name: "instagram", type: "url" }),
-        defineField({ name: "twitter", type: "url" }),
-      ],
-    }),
-    defineField({
-      name: "funButton",
-      type: "object",
-      fields: [
-        defineField({ name: "text", type: "string" }),
-        defineField({ name: "url", type: "url" }),
       ],
     }),
   ],

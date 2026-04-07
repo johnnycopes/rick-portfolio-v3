@@ -36,15 +36,7 @@ export const ABOUT_QUERY = defineQuery(`
     "profileImageWidth": profileImage.asset->metadata.dimensions.width,
     "profileImageHeight": profileImage.asset->metadata.dimensions.height,
     "resumeUrl": resume.asset->url,
-    email,
-    socialLinks,
-    funButton
-  }
-`)
-
-export const HEADER_QUERY = defineQuery(`
-  *[_type == "about"][0] {
-    "twitter": socialLinks.twitter
+    socialLinks
   }
 `)
 
