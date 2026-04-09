@@ -20,7 +20,7 @@ const WorkPage = async () => {
               title={project?.title ?? ''}
               headline={project.headline ?? undefined}
               image={project.thumbnail
-                ? urlFor(project.thumbnail).width(800).height(300).fit("crop").url()
+                ? urlFor(project.thumbnail).width(800).height(450).fit("crop").url()
                 : undefined
               }
               lqip={project.thumbnailLqip ?? undefined}
